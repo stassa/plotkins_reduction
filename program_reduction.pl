@@ -4,6 +4,8 @@
 			    ,program_reduction/3
 			    ]).
 
+:-use_module(examples).
+
 /** <module> Implementation of Gordon Plotkin's program reduction algorithm.
 
 Gordon Plotkin gives the following algorithm for reduction of a set of
@@ -183,7 +185,8 @@ program_reduction(Ps, Rs, Ds):-
 	,G = (program_reduction(M,Ps,[],Rs,[],Ds)
 	     %,reduction_report(Ps,Rs,Ds)
 	     )
-	,C = (%untable_program(M,Ps),
+	,C = (
+	     %untable_program(M,Ps),
 	     retract_program(M,Ps)
 	 )
 	,setup_call_cleanup(S,G,C).
